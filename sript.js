@@ -1,10 +1,16 @@
 let Choice = ['rock','paper','scissor'];
 console.log("Press 0 for rock, 1 for paper, 2 for scissors!")
-function playRound() {
-    let pScore=0;
-    let cScore=0;
-    for(let i = 0; i < 5; i++){
-        let P = Choice.indexOf(playerSelection());
+const rockButton = document.getElementById('rock');
+const paperButton = document.getElementById('paper');
+const scissorButton = document.getElementById('scissor');
+
+rockButton.addEventListener("click",(event) => playRound('rock'));
+paperButton.addEventListener("click",(event)=>playRound('paper'));
+scissorButton.addEventListener("click",(event)=>playRound('scissor'));
+let pScore=0;
+let cScore=0;
+function playRound(button) {
+        let P = Choice.indexOf(button);
         let C = getComputerChoice();
         console.log("player: " + Choice[P]);
         console.log("COmputer: " + Choice[C]);
@@ -27,26 +33,12 @@ function playRound() {
         console.log("player wins!");
         pScore++;
     }
-       
-    }
-    if(pScore>cScore){
-        console.log("Player wins with  a score of "+pScore+"COmputer score: "+cScore);
-    }else if (cScore>pScore){
-        console.log("computer wins with  a score of "+cScore+" player score: "+pScore);
-    }else if (cScore==pScore) console.log("It is a draw!");
-    
-  }
-  function playerSelection(){
-    var X = window.prompt("Rock Paper Scissor Shoot!!");
-    while(X.toLowerCase()!="rock" && X.toLowerCase()!="paper" && X.toLowerCase()!="scissor"){
-        var X = window.prompt("Choose your weapon Rock/Paper/Scissor");
-    }
-    return X.toLowerCase();
   }
   function getComputerChoice(){
     return Math.floor(Math.random() * 3) + 0;
-    
   }
-    console.log(playRound());
-
-  
+ // if(pScore>cScore){
+   // console.log("Player wins with  a score of "+pScore+"COmputer score: "+cScore);
+//}else if (cScore>pScore){
+ //   console.log("computer wins with  a score of "+cScore+" player score: "+pScore);
+//}else if (cScore==pScore) console.log("It is a draw!");
